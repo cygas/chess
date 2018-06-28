@@ -15,7 +15,7 @@
 		this.board = new Board(this.config);		
 		this.board.divCreator.createBoard();
 		
-		//this.player = new Player(this.config.side);
+		this.player = new Player(this.config.side);
 		
 	};
 	
