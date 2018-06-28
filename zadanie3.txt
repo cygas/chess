@@ -1,0 +1,20 @@
+Zadanie 3. VanilaJS
+ 
+Treœæ:
+1. Na pustym ekranie narysowaæ szachownicê sk³adaj¹c¹ siê z czarno-bia³ych bloczków (tag 'div').
+2. Na polach umieœciæ zdjêcia figur szachowych, uk³adamy tylko czarny zestaw figur.
+3. Rozmieœciæ losowo figury na szachownicy.
+4. Po klikniêciu myszk¹ w figurê, zaznaczamy mozliwe pola ruch, zaznaczmy obramowanie pól (ignorujemy inne figury, tj. ka¿d¹ figurê traktujemy jakby by³a sama na polu gry). Po odklikniêciu lub klikniêciu w inn¹ figurê wyczyœæ zanaczenie.
+5. Dodaæ bia³y zestaw figur.
+6. Po kliku w figurê:
+a. zaznaczamy na ¿ó³to puste pola (mo¿liwe ruchy).
+b. nie zaznaczamy figur tego samego koloru (niemo¿liwe ruchy).
+c. figury przeciwnego koloru zaznaczamy na czerwono (mo¿liwe bicia).
+7. Dodaæ pole i przycisk, w które mo¿na podaæ pocz¹tkow¹ iloœæ startowych figur, po klikniêciu w przycisk figury s¹ losowo umieszczane na szachownicy (umieszczamy dwa kolory figur).
+8. Dodaæ pole, w które mo¿na wpisaæ parametr okreœlaj¹cy wielkoœæ szachownicy.
+9. Zbijanie figur po klikniêciu w inn¹ figurê.
+10. Przemieszczanie figur za pomoc¹ drag&dropa (³apiemy figurê, w momencie przesuwania zaznacza siê tylko ramk¹, nad któr¹ aktualnie jesteœmy, upuszczenie skutkuje przemieszczeniem na sta³e figury).
+Ad 1. Labelki okreœlaj¹ce numer wiersza i kolumny (1-8, A-H) nie s¹ konieczne.
+Ad 4. Pionek mo¿e siê poruszaæ tylko 1 pole do przodu (pomijamy mo¿liwoœæ skoku o 2 pola na pocz¹tku rozgrywki).
+Ad 7. Podawana liczba powinna byæ w zakresie 0-32 (2 x 16, czyli tyle ile mamy figur).
+ 
