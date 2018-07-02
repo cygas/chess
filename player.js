@@ -3,7 +3,20 @@
 	global.Player = function(side){
 		
 		this.init = function(){
-			this.pieces = [];			
+			this.pieces = [];				
+			this.position = [];
+			this.white = "W";
+			this.black = "B";			
+			this.num = side;
+			const pieceNum = 16; //number of pieces in chess game
+			
+			this.createPiece(this.pieces);
+			//this.randomPlace(this.num, this.position, this.pieces);
+			this.regularPlace(this.pieces);
+			this.displayPiece(this.pieces, this.black);
+		};
+
+		this.createPiece = function(arr){
 			this.king = Piece.factory("king");
 			this.queen = Piece.factory("queen");
 			this.knight1 = Piece.factory("knight");
@@ -20,33 +33,52 @@
 			this.pawn6 = Piece.factory("pawn");
 			this.pawn7 = Piece.factory("pawn");
 			this.pawn8 = Piece.factory("pawn");
-			this.position = [];
-			this.white = "W";
-			this.black = "B";
-			this.pieceNum = 16; //number of pieces in chess game
-			this.num = side;
-		}.call(this);		
-
-		this.pieces.push(this.king, this.queen, this.knight1, this.knight2, this.rook1, this.rook2, this.bishop1, this.bishop2, this.pawn1, this.pawn2, this.pawn3, this.pawn4, this.pawn5, this.pawn6, this.pawn7, this.pawn8); 
-		
-		while(this.position.length < 2*side){
-			let randomnumber = Math.floor(Math.random()*side*side);
-			if(this.position.indexOf(randomnumber) > -1) continue;
-			this.position[this.position.length] = randomnumber;
-		}
-		
-		this.createPiece = function(obj, color, el){
+			
+			arr.push(this.king, this.queen, this.knight1, this.knight2, this.rook1, this.rook2, this.bishop1, this.bishop2, this.pawn1, this.pawn2, this.pawn3, this.pawn4, this.pawn5, this.pawn6, this.pawn7, this.pawn8); 
+		};		
+		this.randomPlace = function(side, pos, arr){
+			while(pos.length < 2*side){
+				let randomnumber = Math.floor(Math.random()*side*side);
+				if(pos.indexOf(randomnumber) > -1) continue;
+				pos.push(randomnumber);
+			}
+			for(let i=0;i<arr.length;i++){
+				arr[i].pos = pos[i];
+			}
+		};		
+		this.regularPlace = function(){
+			this.king.pos= 4;
+			this.queen.pos= 3;
+			this.rook1.pos= 0;
+			this.rook2.pos= 7;
+			this.knight1.pos= 1;
+			this.knight2.pos= 6;
+			this.bishop1.pos= 2;
+			this.bishop2.pos= 5;
+			this.pawn1.pos= 8;
+			this.pawn2.pos= 9;
+			this.pawn3.pos= 10;
+			this.pawn4.pos= 11;
+			this.pawn5.pos= 12;
+			this.pawn6.pos= 13;
+			this.pawn7.pos= 14;
+			this.pawn8.pos= 15;			
+		};
+		this.addPiece = function(obj, color, el){
 			let piece = "url(img/" + obj.name + color + ".png)";
 			el.style.backgroundImage = piece;
 			el.style.backgroundSize = "contain";
 			return this;
-		}.bind(this);
+		};	
+		this.displayPiece = function(arr, color){
+			for(let i=0; i<arr.length;i++){
+				let el = document.getElementById("cell" + arr[i].pos);
+				this.addPiece(arr[i], color, el);				
+			}
+		};
 		
-		for(let i=0; i<this.position.length;i++){
-			let el = document.getElementById("cell" + this.position[i]);
-			this.createPiece(this.pieces[i], this.black, el);
-		}
-		
+		this.init();
+		console.log();
 	};
 	
-})(this);
+})(window);

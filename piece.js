@@ -2,11 +2,16 @@
 
 	global.Piece = function(){};
 	Piece.factory = function(type){
-		let constr = type;
 		let newpiece;
 		
-		Piece[constr].prototype = new Piece();
-		newpiece = new Piece[constr]();
+		if(typeof Piece[type] !== "function"){
+			throw{
+				name: "Error",
+				message: type + " nie istnieje"
+			}
+		}
+		
+		newpiece = new Piece[type]();
 		newpiece.name = type;
 		newpiece.pos = null;
 		newpiece.moves = [];
