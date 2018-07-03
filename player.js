@@ -69,6 +69,7 @@
 						cell.classList.toggle("cell");
 						arr[i].moves.forEach(function(item){
 							let moveCell = document.getElementById("cell" + item);
+							moveCell.classList.toggle("cell");
 							moveCell.classList.toggle("moveCell");
 						}.bind(this));
 						
