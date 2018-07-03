@@ -4,7 +4,7 @@ Treœæ:
 1. Na pustym ekranie narysowaæ szachownicê sk³adaj¹c¹ siê z czarno-bia³ych bloczków (tag 'div').
 2. Na polach umieœciæ zdjêcia figur szachowych, uk³adamy tylko czarny zestaw figur.
 3. Rozmieœciæ losowo figury na szachownicy.
-4. Po klikniêciu myszk¹ w figurê, zaznaczamy mozliwe pola ruch, zaznaczmy obramowanie pól (ignorujemy inne figury, tj. ka¿d¹ figurê traktujemy jakby by³a sama na polu gry). Po odklikniêciu lub klikniêciu w inn¹ figurê wyczyœæ zanaczenie.
+4. Po klikniêciu myszk¹ w figurê, zaznaczamy mozliwe pola ruchu, zaznaczmy obramowanie pól (ignorujemy inne figury, tj. ka¿d¹ figurê traktujemy jakby by³a sama na polu gry). Po odklikniêciu lub klikniêciu w inn¹ figurê wyczyœæ zanaczenie.
 5. Dodaæ bia³y zestaw figur.
 6. Po kliku w figurê:
 a. zaznaczamy na ¿ó³to puste pola (mo¿liwe ruchy).
