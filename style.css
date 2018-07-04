@@ -61,8 +61,11 @@ body{
 	background: rgb(66, 185, 244);
 }
 .moveCell{
-	box-sizing: border-box;	
-	border: 2px solid #42b9f4;
+	display: inline-block;
+	cursor: pointer;
+	/*box-sizing: border-box;	
+	border: 2px solid #fff; */
+	background: rgb(66, 185, 244);
 }
 .moveCell:hover{
 	background: rgb(66, 185, 244, 0.6);
