@@ -126,4 +126,4 @@
 		return moves;
 	};
 	
-})(this);
+})(window);

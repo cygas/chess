@@ -63,14 +63,30 @@
 			for(let i=0;i<arr.length;i++){
 				if(arr[i].pos!==null){
 					let cell = document.getElementById("cell" + arr[i].pos);
-					arr[i].moves = checkPos(side, arr[i]);
+					arr[i].moves = checkPos(side, arr[i]);					
 					cell.addEventListener("click", function(){	
+						
+						if(!cell.classList.contains("clickCell")){
+							let cellWithClickClass = document.getElementsByClassName("clickCell");
+							let cellWithMoveClass = document.querySelectorAll(".moveCell");
+							
+							for(let i=0;i<cellWithClickClass.length;i++){
+								cellWithClickClass[i].classList.add("cell");
+								cellWithClickClass[i].classList.remove("clickCell");
+							}
+							
+							for(let i=0;i<cellWithMoveClass.length;i++){
+								cellWithMoveClass[i].classList.add("cell");				
+								cellWithMoveClass[i].classList.remove("moveCell");										
+							}
+							
+						}
 						cell.classList.toggle("clickCell");
 						cell.classList.toggle("cell");
-						arr[i].moves.forEach(function(item){
+						arr[i].moves.forEach(function(item){							
 							let moveCell = document.getElementById("cell" + item);
 							moveCell.classList.toggle("cell");
-							moveCell.classList.toggle("moveCell");
+							moveCell.classList.toggle("moveCell");							
 						}.bind(this));
 						
 					}.bind(this));
@@ -86,4 +102,4 @@
 		console.log(this.bishop2);		
 	};
 	
-})(this);
+})(window);
