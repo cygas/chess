@@ -2,7 +2,7 @@
 	
 	global.App = function({height, side}){
 		
-		this.init = function(){
+		this.init = function({height, side}){
 			this.config = {
 				chessBoard: document.getElementById("board"),
 				rowClass: "row",
@@ -14,7 +14,7 @@
 			this.player = new Player(this.config.side);
 		};
 		
-		this.init();	
+		this.init({height: height, side: side});	
 	};
 	
-})(this);
+})(window);

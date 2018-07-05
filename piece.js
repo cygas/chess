@@ -37,4 +37,4 @@
 		this.possibleMoves = [];
 	};
 
-})(this);
+})(window);

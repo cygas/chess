@@ -2,7 +2,7 @@
 	
 	global.Board = function(config){
 		this.init = function(obj){
-			this.divCreator.createBoard(obj)
+			this.divCreator.createBoard(obj);
 		};
 		
 		this.divCreator = {

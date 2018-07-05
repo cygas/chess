@@ -2,17 +2,17 @@
 	
 	global.Player = function(side){
 		
-		this.init = function(){
+		this.init = function(side){
 			this.pieces = [];				
-			this.position = [];
-			this.white = "W";
-			this.black = "B";			
+			this.position = [];			
 			this.num = side;
+			const white = "W";
+			const black = "B";			
 			const pieceNum = 16; //number of pieces in chess game
 			
 			this.createPiece(this.pieces);
 			this.randomPlace(this.num, this.position);
-			this.displayPiece(this.position, this.pieces, this.black);
+			this.displayPiece(this.position, this.pieces, black);
 		};
 
 		this.createPiece = function(arr){
@@ -55,7 +55,7 @@
 			}
 		};
 		
-		this.init();		
+		this.init(side);		
 	};
 	
 })(window);
