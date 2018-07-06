@@ -110,43 +110,7 @@
 				if(arr[i].pos!==null){
 					let cell = document.getElementById("cell" + arr[i].pos);
 					arr[i].moves = checkPos(side, arr[i]);					
-					cell.addEventListener("click", function(){	
-						
-						if(!cell.classList.contains("clickCell")){
-							let cellWithClickClass = board.getElementsByClassName("clickCell");
-							let cellWithMoveClass = board.querySelectorAll(".moveCell");
-							let cellWithBeating = board.querySelectorAll(".beating");
-							
-							for(let i=0;i<cellWithClickClass.length;i++){
-								cellWithClickClass[i].classList.add("cell");
-								cellWithClickClass[i].classList.remove("clickCell");
-							}
-							
-							for(let i=0;i<cellWithMoveClass.length;i++){
-								cellWithMoveClass[i].classList.add("cell");				
-								cellWithMoveClass[i].classList.remove("moveCell");										
-							}
-							
-							for(let i=0;i<cellWithBeating.length;i++){
-								cellWithBeating[i].classList.add("cell");				
-								cellWithBeating[i].classList.remove("beating");										
-							}
-							
-						}
-						cell.classList.toggle("clickCell");
-						cell.classList.toggle("cell");
-						arr[i].moves.forEach(function(item){							
-							let moveCell = document.getElementById("cell" + item);
-							if(moveCell.style.backgroundImage == ""){
-								moveCell.classList.toggle("cell");
-								moveCell.classList.toggle("moveCell");	
-							}else{
-								moveCell.classList.toggle("cell");
-								moveCell.classList.toggle("beating");	
-							}							
-						});
-						
-					});
+					setClickEvent(cell, arr[i], board);
 				}
 			}
 			return this;
