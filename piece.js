@@ -1,7 +1,7 @@
 (function(global){
 
 	global.Piece = function(){};
-	Piece.factory = function(type, side){
+	Piece.factory = function(type, side, color){
 		let newpiece;
 		
 		if(typeof Piece[type] !== "function"){
@@ -11,7 +11,7 @@
 			}
 		}
 		
-		newpiece = new Piece[type](side);
+		newpiece = new Piece[type](side, color);
 		newpiece.name = type;
 		newpiece.pos = null;
 		newpiece.moves = [];
@@ -109,10 +109,17 @@
 			}	
 		}
 	};
-	Piece.pawn = function(side){
-		this.possibleMoves = {
-			bottom: [side]
-		};
+	Piece.pawn = function(side, color){		
+		if(color == "B"){
+			this.possibleMoves = {
+				bottom: [side]
+			};
+		}
+		if(color == "W"){
+			this.possibleMoves = {
+				top: [-side]
+			};
+		}
 	};
-
-})(this);
+	
+})(window);
