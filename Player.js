@@ -1,18 +1,18 @@
 (function(global){
 	
-	global.Player = function(side){
+	global.Player = function(config){
 				
-		this.init = function(){
-			this.pieces = [];				
-			this.position = [];
-			this.white = "W";
-			this.black = "B";			
+		this.init = function(side, board){
+			this.pieces = [];		
 			this.num = side;
+			const position = [];
+			const white = "W";
+			const black = "B";		
 			this.pieceNum = 16; //number of pieces in chess game
 			
-			this.createPiece(this.pieces, this.num).randomPlace(this.num, this.position);
+			this.createPiece(this.pieces, this.num).randomPlace(this.num, position);
 			//this.randomPlace(this.num, this.position);
-			this.displayPiece(this.position, this.pieces, this.black).showMoves(this.pieces);
+			this.displayPiece(position, this.pieces, black, board).showMoves(this.pieces, side, board);
 			//this.showMoves(this.pieces);
 		};
 
@@ -51,38 +51,53 @@
 			el.style.backgroundSize = "contain";
 			return this;
 		};	
-		this.displayPiece = function(pos, arr, color){
+		this.displayPiece = function(pos, arr, color, board){
 			for(let i=0; i<pos.length;i++){
-				let el = document.getElementById("cell" + pos[i]);
+				let el = board.querySelector("#cell_" + pos[i]);
 				this.addPiece(arr[i], color, el);
 				arr[i].pos = pos[i];
 			}
 			return this;
 		};
-		this.showMoves = function(arr){
+		this.showMoves = function(arr, side, board){
 			for(let i=0;i<arr.length;i++){
 				if(arr[i].pos!==null){
-					let cell = document.getElementById("cell" + arr[i].pos);
-					arr[i].moves = checkPos(side, arr[i]);
+					let cell = board.querySelector("#cell_" + arr[i].pos);
+					arr[i].moves = checkPos(side, arr[i]);					
 					cell.addEventListener("click", function(){	
+						
+						if(!cell.classList.contains("clickCell")){
+							let cellWithClickClass = Array.prototype.slice.call(board.getElementsByClassName("clickCell"));
+							let cellWithMoveClass = board.querySelectorAll(".moveCell");			
+							
+							cellWithClickClass.forEach(function(item){
+								item.classList.add("cell");
+								item.classList.remove("clickCell");
+							});
+							cellWithMoveClass.forEach(function(item){
+								item.classList.add("cell");
+								item.classList.remove("moveCell");
+							});						
+						}
 						cell.classList.toggle("clickCell");
 						cell.classList.toggle("cell");
-						arr[i].moves.forEach(function(item){
-							let moveCell = document.getElementById("cell" + item);
-							moveCell.classList.toggle("moveCell");
-						}.bind(this));
+						arr[i].moves.forEach(function(item){							
+							let moveCell = document.getElementById("cell_" + item);
+							moveCell.classList.toggle("cell");
+							moveCell.classList.toggle("moveCell");							
+						});
 						
-					}.bind(this));
+					});
 				}
 			}
 			return this;
 		};		
 		
-		this.init();	
+		this.init(config.side, config.chessBoard);	
 		
 		console.log(this.queen);
 		console.log(this.rook1);
 		console.log(this.bishop2);		
 	};
 	
-})(this);
+})(window);
