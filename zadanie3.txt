@@ -8,8 +8,9 @@ Treœæ:
 5. Dodaæ bia³y zestaw figur.
 6. Po kliku w figurê:
 a. zaznaczamy na ¿ó³to puste pola (mo¿liwe ruchy).
-b. nie zaznaczamy figur tego samego koloru (niemo¿liwe ruchy).
+b. nie zaznaczamy figur tego samego koloru (niemo¿liwe ruchy). 
 c. figury przeciwnego koloru zaznaczamy na czerwono (mo¿liwe bicia).
+
 7. Dodaæ pole i przycisk, w które mo¿na podaæ pocz¹tkow¹ iloœæ startowych figur, po klikniêciu w przycisk figury s¹ losowo umieszczane na szachownicy (umieszczamy dwa kolory figur).
 8. Dodaæ pole, w które mo¿na wpisaæ parametr okreœlaj¹cy wielkoœæ szachownicy.
 9. Zbijanie figur po klikniêciu w inn¹ figurê.
