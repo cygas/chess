@@ -29,6 +29,13 @@
 			
 			this.config.chessBoard.innerHTML = "";
 			
+			if(this.config.piece > 2*this.config.side){
+				throw{
+					name: "Error",
+					message: "Zasady mówią, że pionków jest max dwa razy tyle, ile wynosi bok szachownicy mój mały urwisie."
+				}
+			}
+			
 			if(!isNaN(this.config.height)){
 				let board = new Board(this.config);		
 				let playerB = new Player(this.config, this.config.black);
