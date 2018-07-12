@@ -19,7 +19,7 @@
 			div.style.height = this.height + "px";
 			parent.appendChild(div);				
 		};
-		this.createBoard = function(obj){					
+		this.createBoard = function(obj){			
 			for(let i=0; i<obj.side; i++){			
 				this.nameClass = obj.rowClass;
 				this.id = obj.rowClass + i;	

@@ -2,18 +2,56 @@ body{
 	font-family: Arial;
 	font-size: 14px;
 }
-#container{
+main{
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	left: 0;
 	top: 0;		
 }
-#board{
-    position: absolute;
+#container{
+	position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+#inputs{
+	height: 70px;
+	width: 630px;
+	background: #aaa;	
+	margin-bottom: 20px;	
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;	
+	border-radius: 8px;
+	-webkit-box-shadow: 9px 10px 28px -6px rgba(99,98,99,1);
+	-moz-box-shadow: 9px 10px 28px -6px rgba(99,98,99,1);
+	box-shadow: 9px 10px 28px -6px rgba(99,98,99,1);
+
+}
+#inputs div{
+	display: inline-block;
+	margin: 10px 10px 0 10px;	
+}
+#inputs div:last-child{
+	overflow: hidden;
+	margin-left: 40px;	
+}
+#inputs div p{
+	margin: 0 0 10px 0;
+}
+#submit input{
+	height: 35px;
+	width: 80px;
+	border: none;
+	border-radius: 3px;
+	letter-spacing: 2px;
+	background-color: rgb(150, 104, 19);
+	color: #eee;
+}
+#submit input:hover{
+	cursor: pointer;
+	background-color: rgb(242, 207, 70);
 }
 .row{
 	margin-left: auto;
@@ -63,11 +101,21 @@ body{
 .moveCell{
 	display: inline-block;
 	cursor: pointer;
-	/*box-sizing: border-box;	
-	border: 2px solid #fff; */
+	box-sizing: border-box;	
+	border: 2px solid #2277a3; 
 	background: rgb(66, 185, 244);
 }
 .moveCell:hover{
 	background: rgb(66, 185, 244, 0.6);
 	cursor: pointer; 
+}
+.beating{
+	display: inline-block;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: 2px solid red;
+	background: rgb(255, 0, 0, 0.6);
+}
+.beating:hover{
+	background: rgb(255, 0, 0, 0.3);
 }
