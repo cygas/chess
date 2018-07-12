@@ -63,8 +63,8 @@ body{
 .moveCell{
 	display: inline-block;
 	cursor: pointer;
-	/*box-sizing: border-box;	
-	border: 2px solid #fff; */
+	box-sizing: border-box;	
+	border: 2px solid #2277a3; 
 	background: rgb(66, 185, 244);
 }
 .moveCell:hover{
