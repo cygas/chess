@@ -8,9 +8,7 @@
 			this.num = config.side;
 			this.pieceNum = 16; //number of pieces in chess game
 			const board = config.chessBoard;			
-			const pieceColor = color;
-			const white = config.white;
-			const black = config.black;		
+			const pieceColor = color;					
 			
 			this.createPiece(this.pieces, this.num, pieceColor)
 			.randomPlace(this.num, this.position, this.pieces, board)
