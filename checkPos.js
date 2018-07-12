@@ -1,6 +1,6 @@
 (function(global){
 	
-	global.checkPos = function(side, piece){
+	global.checkPos = function(side, piece, board){
 		let boardBox = {
 			top: [],
 			bottom: [],
@@ -22,27 +22,48 @@
 		};	
 		boardSide(boardBox, side);
 		
-		let addMove = function(piece, side, boardBox){			
+		let addMove = function(piece, side, boardBox, board){			
 			for(let d in piece.possibleMoves){
-				for(let i=0; i<piece.possibleMoves[d].length;i++){
+				for(let i=0; i<piece.possibleMoves[d].length;i++){				
 
-					let k=piece.pos+piece.possibleMoves[d][i];
+					let k=piece.pos+piece.possibleMoves[d][i];				
 					if(!(k<boardBox.lt) && !(k>boardBox.rb)){
 						
 						if(piece.name == "knight"){						
 							addKnightMoves(boardBox, piece, moves, k, d);
-						}else{
+						}else{		
+							let occupiedCell = board.querySelector("#cell_" + k);
+							if(!occupiedCell){
+								console.log(occupiedCell);
+								console.log(k);
+							}
+							let occupiedCellBackground = occupiedCell.style.backgroundImage;
 							
 							if(checkLeftSide(boardBox, piece, k, d)){
-								moves.push(k);
+								if(occupiedCellBackground == ""){
+									moves.push(k);
+								}else{
+									moves.push(k);
+									break;
+								}
 							}
 							if(checkRightSide(boardBox, piece, k, d)){
-								moves.push(k);
+								if(occupiedCellBackground == ""){
+									moves.push(k);
+								}else{
+									moves.push(k);
+									break;
+								}
 							}
 							
 							if(boardBox.top.indexOf(piece.pos)>=0){
 								if(boardBox.left.indexOf(k)<0 && boardBox.right.indexOf(k)<0 && k!= boardBox.lt && k!= boardBox.rt){
-									moves.push(k);
+									if(occupiedCellBackground == ""){
+										moves.push(k);
+									}else{
+										moves.push(k);
+										break;
+									}
 								}else{
 									moves.push(k);
 									break;
@@ -50,7 +71,12 @@
 							}					
 							if(boardBox.bottom.indexOf(piece.pos)>=0){
 								if(boardBox.left.indexOf(k)<0 && boardBox.right.indexOf(k)<0 && k!=boardBox.lb && k!= boardBox.rb){
-									moves.push(k);
+									if(occupiedCellBackground == ""){
+										moves.push(k);
+									}else{
+										moves.push(k);
+										break;
+									}
 								}else{
 									moves.push(k);
 									break;
@@ -58,7 +84,12 @@
 							}			
 							if(checkPieceInside(piece, boardBox)){
 								if(checkMoveInside(k, boardBox)){
-									moves.push(k);
+									if(occupiedCellBackground === ""){
+										moves.push(k);
+									}else{										
+										moves.push(k);
+										break;
+									}
 								}else{
 									moves.push(k);
 									break;
@@ -70,7 +101,7 @@
 			}
 		};
 		
-		addMove(piece, side, boardBox);
+		addMove(piece, side, boardBox, board);
 		return moves;
 	};
 	

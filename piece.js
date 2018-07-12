@@ -13,9 +13,10 @@
 		
 		newpiece = new Piece[type](side, color);
 		newpiece.name = type;
+		newpiece.color = color;
 		newpiece.pos = null;
 		newpiece.moves = [];
-		newpiece.check = "check" + type.charAt(0).toUpperCase() + type.slice(1);
+		newpiece.check = "check" + type.charAt(0).toUpperCase() + type.slice(1); //right now it does nothing but maybe it will be necessary in the future
 		return newpiece;
 	};
 	

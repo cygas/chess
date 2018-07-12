@@ -1,8 +1,8 @@
 (function(global){
-	global.setClickEvent = function(cell, arr, board){
+	global.setClickEvent = function(cell, arr, board, side){
 		
 		cell.addEventListener("click", function(){	
-						
+			arr.moves = checkPos(side, arr, board);				
 			if(!cell.classList.contains("clickCell")){
 				let cellWithClickClass = board.getElementsByClassName("clickCell");
 				let cellWithMoveClass = board.querySelectorAll(".moveCell");
@@ -15,11 +15,13 @@
 			}
 			toggleClass(cell, "clickCell", "cell");
 			arr.moves.forEach(function(item){							
-				let moveCell = document.getElementById("cell" + item);
+				let moveCell = board.querySelector("#cell_" + item);
 				if(moveCell.style.backgroundImage == ""){
 					toggleClass(moveCell, "cell", "moveCell");					
 				}else{
-					toggleClass(moveCell, "cell", "beating");					
+					if(arr.color !== moveCell.style.backgroundImage.slice(-7,-6)){
+						toggleClass(moveCell, "cell", "beating");	
+					}				
 				}							
 			});
 			
