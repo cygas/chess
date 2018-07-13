@@ -91,7 +91,7 @@ main{
 	cursor: pointer;	
 	border: 2px solid #fff;
 }
-.clickCell{
+.clickedCell{
 	display: inline-block;
 	cursor: pointer;
 	box-sizing: border-box;	
