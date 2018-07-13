@@ -1,26 +1,32 @@
 (function(global){
+	//after clicking on  piece show possible moves and beating by add appropriate class
 	global.setClickEvent = function(cell, arr, board, side){
+		const CELL = "cell"; // name of class
+		const CLICKCELL = "clickedCell"; // name of class
+		const MOVECELL = "moveCell"; // name of class
+		const BEATING = "beating"; // name of class
+		const CELLID = "#cell_"; // beginning of id name 
 		
 		cell.addEventListener("click", function(){	
-			arr.moves = checkPos(side, arr, board);			
-			if(!cell.classList.contains("clickCell")){
-				let cellWithClickClass = board.getElementsByClassName("clickCell");
-				let cellWithMoveClass = board.querySelectorAll(".moveCell");
-				let cellWithBeating = board.querySelectorAll(".beating");
+			arr.moves = checkPos(side, arr, board);				
+			if(!cell.classList.contains(CLICKCELL)){
+				let cellWithClickClass = board.getElementsByClassName(CLICKCELL);
+				let cellWithMoveClass = board.querySelectorAll("." + MOVECELL);
+				let cellWithBeating = board.querySelectorAll("." + BEATING);
 				
-				addRemoveClass(cellWithClickClass, "cell", "clickCell");
-				addRemoveClass(cellWithMoveClass, "cell", "moveCell");
-				addRemoveClass(cellWithBeating, "cell", "beating");
+				addRemoveClass(cellWithClickClass, CELL, CLICKCELL);
+				addRemoveClass(cellWithMoveClass, CELL, MOVECELL);
+				addRemoveClass(cellWithBeating, CELL, BEATING);
 				
 			}
-			toggleClass(cell, "clickCell", "cell");
+			toggleClass(cell, CLICKCELL, CELL);
 			arr.moves.forEach(function(item){							
-				let moveCell = board.querySelector("#cell_" + item);
+				let moveCell = board.querySelector(CELLID + item);
 				if(moveCell.style.backgroundImage == ""){
-					toggleClass(moveCell, "cell", "moveCell");					
+					toggleClass(moveCell, CELL, MOVECELL);					
 				}else{
 					if(arr.color !== moveCell.style.backgroundImage.slice(-7,-6)){
-						toggleClass(moveCell, "cell", "beating");	
+						toggleClass(moveCell, CELL, BEATING);	
 					}				
 				}							
 			});
