@@ -1,6 +1,8 @@
 (function(global){
 	
 	global.checkPos = function(side, piece, board){
+		const KNIGHT = "knight"; //name of knight :]
+		const CELLID = "#cell_"; // beginning of id name 
 		let boardBox = {
 			top: [],
 			bottom: [],
@@ -26,13 +28,13 @@
 			for(let d in piece.possibleMoves){
 				for(let i=0; i<piece.possibleMoves[d].length;i++){				
 
-					let k=piece.pos+piece.possibleMoves[d][i];				
+					let k=piece.pos+piece.possibleMoves[d][i]; //possible place for move		
 					if(!(k<boardBox.lt) && !(k>boardBox.rb)){
 						
-						if(piece.name == "knight"){						
+						if(piece.name == KNIGHT){						
 							addKnightMoves(boardBox, piece, moves, k, d);
 						}else{		
-							let occupiedCell = board.querySelector("#cell_" + k);
+							let occupiedCell = board.querySelector(CELLID + k);
 							if(!occupiedCell){
 								console.log(occupiedCell);
 								console.log(k);

@@ -1,24 +1,33 @@
 (function(global){
 	
-	global.addKnightMoves = function(boardBox, piece, moves, k, d){
+	const TOP = "top"; //top-direction of piece's moves
+	const BOTTOM = "bottom"; //bottom-direction of piece's moves
+	const RIGHT = "right"; //right-direction of piece's moves
+	const LEFT = "left"; //left-direction of piece's moves
+	const RT = "rt"; //right-top-direction of piece's moves
+	const RB = "rb"; //right-bottom-direction of piece's moves
+	const LT = "lt"; //left-top-direction of piece's moves
+	const LB = "lb"; //left-bottom-direction of piece's moves	
+	
+	global.addKnightMoves = function(boardBox, piece, moves, k, d){	
 		
 		if(boardBox.right.indexOf(piece.pos)>=0 || piece.pos==boardBox.rt || piece.pos==boardBox.rb){
-			if(d!="top" && d!="rt" && d!="right" && d!="rb"){
+			if(d!=TOP && d!=RT && d!=RIGHT && d!=RB){
 					moves.push(k);
 			}
 		}else{
 			if(boardBox.right.indexOf(piece.pos+1)>=0 || (piece.pos+1)==boardBox.rt || (piece.pos+1)==boardBox.rb){
-				if(d!="rt" && d!="right"){									
+				if(d!=RT && d!=RIGHT){									
 					moves.push(k);									
 				}
 			}else{
 				if(boardBox.left.indexOf(piece.pos)>=0 || piece.pos==boardBox.lt || piece.pos==boardBox.lb){
-					if(d!="lt" && d!="left" && d!="lb" && d!="bottom"){
+					if(d!=LT && d!=LEFT && d!=LB && d!=BOTTOM){
 						moves.push(k);
 					}
 				}else{
 					if(boardBox.left.indexOf(piece.pos-1)>=0 || (piece.pos-1)==boardBox.lt || (piece.pos-1)==boardBox.lb){
-						if(d!="left" && d!="lb"){
+						if(d!=LEFT && d!=LB){
 							moves.push(k);
 						}
 					}else{
@@ -30,17 +39,17 @@
 	};	
 	global.checkLeftSide = function(boardBox, piece, k, d){
 		if(boardBox.left.indexOf(piece.pos)>=0){
-			if(d!="left" && d!="lt" && d!="lb"){								
+			if(d!=LEFT && d!=LT && d!=LB){								
 				return true;
 			}							
 		}	
 		if(piece.pos == boardBox.lt){
-			if(d!= "lb"){
+			if(d!= LB){
 				return true;
 			}
 		}
 		if(piece.pos == boardBox.lb){
-			if(d!="lt" && d!="left" && d!="lb"){
+			if(d!=LT && d!=LEFT && d!=LB){
 				return true;
 			}
 		}
@@ -49,17 +58,17 @@
 	global.checkRightSide = function(boardBox, piece, k, d){
 		
 		if(boardBox.right.indexOf(piece.pos)>=0){
-			if(d!="right" && d!="rt" && d!="rb"){								
+			if(d!=RIGHT && d!=RT && d!=RB){								
 				return true;
 			}
 		}							
 		if(piece.pos == boardBox.rt){
-			if(d!="right" && d!="rb" && d!="rt"){
+			if(d!=RIGHT && d!=RB && d!=RT){
 				return true;
 			}
 		}							
 		if(piece.pos == boardBox.rb){
-			if(d!= "rt"){
+			if(d!= RT){
 				return true
 			}
 		}	
